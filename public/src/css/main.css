@@ -1,0 +1,29 @@
+.wrapper {
+	width: 65%;
+	margin: 0 auto;
+	font-family: 'PT Sans', sans-serif;
+}
+
+.posting-form {
+	margin: 10px;
+}
+
+.post-control {
+	margin-top: 5px;
+	float: right;
+}
+
+.posts {
+	margin-top: 50px;
+}
+
+.logout {
+	position: fixed;
+	right: 30px;
+	top: 20px;
+}
+
+
+.errors ul li {
+	list-style-type: none;
+}
