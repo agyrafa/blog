@@ -14,6 +14,7 @@
                 </form>
             </div>
             <div class="posts">
+                @include('includes.error_messages')
                 @foreach($posts as $post)
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -24,7 +25,7 @@
                         <span>{{ $post->created_at }}</span>
                         @if (Auth::user() == $post->user)
                         <div class="control pull-right">
-                            <a href="{{ route('post.delete', ['post_id' => $post->id]) }}"><span class="glyphicon glyphicon-remove"></span></a>
+                            <a href="{{ route('post.delete', ['post_id' => $post->id]) }}" title="Delete"><span class="glyphicon glyphicon-remove"></span></a>
                         </div>
                         @endif
                     </div>
