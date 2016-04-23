@@ -1,9 +1,14 @@
 @extends('layouts.base')
 
+@section('title')
+    Dashboard
+@endsection
+
 @section('content')
     <div class="container">
         <div class="logout">
-            <a href="{{ route('logout') }}">Logout</a>
+            <a class="btn btn-primary" href="{{ route('account') }}">Account</a>
+            <a class="btn btn-danger" href="{{ route('logout') }}">Logout</a>
         </div>
         <div class="wrapper">
             <div class="posting-form">
@@ -14,7 +19,7 @@
                 </form>
             </div>
             <div class="posts">
-                @include('includes.error_messages')
+                @include('includes.messages')
                 @foreach($posts as $post)
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -23,11 +28,23 @@
                     <div class="panel-footer">
                         <span>{{ $post->user->username }}</span> &#124;
                         <span>{{ $post->created_at }}</span>
-                        @if (Auth::user() == $post->user)
                         <div class="control pull-right">
-                            <a href="{{ route('post.delete', ['post_id' => $post->id]) }}" title="Delete"><span class="glyphicon glyphicon-remove"></span></a>
+                            <a href="#" title="Up">
+                                <span class="glyphicon glyphicon-circle-arrow-up"></span>
+                            </a>
+                            <a href="#" title="Down">
+                                <span class="glyphicon glyphicon-circle-arrow-down"></span>
+                            </a>
+                            @if (Auth::user() == $post->user)
+                                &#149;
+                            <a href="#" title="Edit">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                            <a href="{{ route('post.delete', ['post_id' => $post->id]) }}" title="Delete">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                            </a>
+                            @endif
                         </div>
-                        @endif
                     </div>
                 </div>
                 @endforeach

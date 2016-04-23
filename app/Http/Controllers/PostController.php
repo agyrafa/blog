@@ -11,6 +11,7 @@ class PostController extends Controller
     public function getDashboard()
     {
         $posts = Post::orderBy('created_at', 'desc')->get();
+
         return view('dashboard', ['posts' => $posts]);
     }
 
@@ -22,10 +23,13 @@ class PostController extends Controller
 
         $post = new Post();
         $post->content = $request['content'];
+        $message = '';
 
-        $request->user()->posts()->save($post);
+        if($request->user()->posts()->save($post)) {
+            $message = 'Post successfully created!';
+        }
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with(['message' => $message]);
     }
 
     public function getDeletePost($post_id)
@@ -34,8 +38,11 @@ class PostController extends Controller
         if (Auth::user() != $post->user) {
             return redirect()->back();
         }
-        $post->delete();
+        $message = '';
+        if($post->delete()) {
+            $message = 'Post successfully deleted!';
+        }
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with(['message' => $message]);
     }
 }

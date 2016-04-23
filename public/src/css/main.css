@@ -27,3 +27,9 @@
 .errors ul li {
 	list-style-type: none;
 }
+
+.account {
+	width: 500px;
+	padding: 10px;
+	margin: auto;
+}

@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/access_denied', function () {
+    return view('errors/403');
+})->name('403');
+
 Route::post('/signup', [
     'uses' => 'UserController@postSignUp',
     'as' => 'signup'
@@ -27,6 +31,22 @@ Route::post('/signin', [
 Route::get('/logout', [
     'uses' => 'UserController@getLogout',
     'as' => 'logout'
+]);
+
+Route::get('/account', [
+   'uses' => 'UserController@getAccount',
+    'as' => 'account',
+    'middleware' => 'auth'
+]);
+
+Route::post('account_update', [
+   'uses' => 'UserController@postUpdateAccount',
+    'as' => 'account.update'
+]);
+
+Route::get('account_photo/{filename}', [
+   'uses' => 'UserController@getUserPhoto',
+    'as' => 'account.photo'
 ]);
 
 Route::get('/dashboard', [
