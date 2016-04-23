@@ -61,8 +61,14 @@ Route::post('/create_post', [
     'middleware' => 'auth'
 ]);
 
+
 Route::get('/delete_post/{post_id}', [
     'uses' => 'PostController@getDeletePost',
     'as' => 'post.delete',
     'middleware' => 'auth'
+]);
+
+Route::get('attachment/{filename}', [
+    'uses' => 'PostController@getAttachPhoto',
+    'as' => 'upload.photo'
 ]);

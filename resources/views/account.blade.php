@@ -12,6 +12,8 @@
             <div class="panel-body">
                 @if (Storage::disk('public')->has($user->username . '-' . $user->id .'.jpg'))
                 <img src="{{ route('account.photo', ['filename' => $user->username . '-' . $user->id . '.jpg']) }}" width="30%" height="30%" name="account_photo" alt="account_photo">
+                @else
+                    <img src="{{ asset('src/img/noavatar.png') }}">
                 @endif
         <form action="{{ route('account.update') }}" method="post" enctype="multipart/form-data">
             <div class="form-group">

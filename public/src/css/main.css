@@ -23,7 +23,6 @@
 	top: 20px;
 }
 
-
 .errors ul li {
 	list-style-type: none;
 }
@@ -32,4 +31,10 @@
 	width: 500px;
 	padding: 10px;
 	margin: auto;
+}
+
+.control {
+	position: relative;
+	top: -5px;
+	right: -5px;
 }

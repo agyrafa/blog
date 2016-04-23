@@ -12,9 +12,13 @@
         </div>
         <div class="wrapper">
             <div class="posting-form">
-                <form action="{{ route('post.create') }}" method="post">
+                <form action="{{ route('post.create') }}" method="post" enctype="multipart/form-data">
                     <textarea class="form-control" name="content" rows="8"></textarea>
-                    <button class="btn btn-success post-control" type="submit">Post</button>
+                    <div class="post-control">
+                        <label for="upload_photo"><span class="btn glyphicon glyphicon-picture"></span></label>
+                        <input type="file" class="hidden" id="upload_photo" name="upload_photo">
+                    <button class="btn btn-success" type="submit">Post</button>
+                    </div>
                     <input type="hidden" value="{{ Session::token() }}" name="_token">
                 </form>
             </div>
@@ -23,27 +27,39 @@
                 @foreach($posts as $post)
                 <div class="panel panel-default">
                     <div class="panel-body">
+                        @if (Auth::user() == $post->user)
+                            <div class="control pull-right">
+                                <a href="#" title="Edit">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
+                                <a href="{{ route('post.delete', ['post_id' => $post->id]) }}" title="Delete">
+                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                </a>
+                            </div>
+                        @endif
                         <p id="content">{{ $post->content }}</p>
+                        @if (Storage::disk('public')->has($post->id .'.jpg'))
+                        <hr>
+                        <div class="row">
+                            <div class="col-xs-6 col-md-3">
+                                <a href="{{ route('upload.photo', ['filename' => $post->id . '.jpg']) }}" class="thumbnail" target="_blank">
+                                    <img src="{{ route('upload.photo', ['filename' => $post->id . '.jpg']) }}" alt="photo">
+                                </a>
+                            </div>
+                        </div>
+                        @endif
                     </div>
                     <div class="panel-footer">
                         <span>{{ $post->user->username }}</span> &#124;
                         <span>{{ $post->created_at }}</span>
-                        <div class="control pull-right">
-                            <a href="#" title="Up">
-                                <span class="glyphicon glyphicon-circle-arrow-up"></span>
-                            </a>
-                            <a href="#" title="Down">
-                                <span class="glyphicon glyphicon-circle-arrow-down"></span>
-                            </a>
-                            @if (Auth::user() == $post->user)
-                                &#149;
-                            <a href="#" title="Edit">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                            </a>
-                            <a href="{{ route('post.delete', ['post_id' => $post->id]) }}" title="Delete">
-                                <span class="glyphicon glyphicon-remove-circle"></span>
-                            </a>
-                            @endif
+                        <div class="info pull-right">
+                                <span title="Total score" class="badge">1043</span>
+                                <a href="#" title="Up">
+                                    <span class="glyphicon glyphicon-circle-arrow-up"></span>
+                                </a>
+                                <a href="#" title="Down">
+                                    <span class="glyphicon glyphicon-circle-arrow-down"></span>
+                                </a>
                         </div>
                     </div>
                 </div>
