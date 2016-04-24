@@ -11,9 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+/*Route::get('/', function () {
+    return view('dashboard');
+})->name('home');*/
+
+Route::get('/', [
+    'uses' => 'PostController@getDashboard',
+    'as' => 'home',
+]);
 
 Route::get('/access_denied', function () {
     return view('errors/403');
@@ -26,6 +31,16 @@ Route::post('/signup', [
 Route::post('/signin', [
     'uses' => 'UserController@postSignIn',
     'as' => 'signin'
+]);
+
+Route::get('/sign_up', [
+   'uses' => 'UserController@getSignUp',
+    'as' => 'sign.up'
+]);
+
+Route::get('/sign_in', [
+    'uses' => 'UserController@getSignIn',
+    'as' => 'sign.in'
 ]);
 
 Route::get('/logout', [
@@ -49,11 +64,6 @@ Route::get('account_photo/{filename}', [
     'as' => 'account.photo'
 ]);
 
-Route::get('/dashboard', [
-    'uses' => 'PostController@getDashboard',
-    'as' => 'dashboard',
-    'middleware' => 'auth'
-]);
 
 Route::post('/create_post', [
     'uses' => 'PostController@postCreatePost',

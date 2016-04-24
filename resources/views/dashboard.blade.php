@@ -6,11 +6,20 @@
 
 @section('content')
     <div class="container">
+        @if (!Auth::check())
+        <div class="sign-up-in">
+            <a class="btn btn-primary" href="{{ route('sign.up') }}">Sign Up</a>
+            <a class="btn btn-success" href="{{ route('sign.in') }}">Sign In</a>
+        </div>
+        @endif
+        @if (Auth::check())
         <div class="logout">
             <a class="btn btn-primary" href="{{ route('account') }}">Account</a>
             <a class="btn btn-danger" href="{{ route('logout') }}">Logout</a>
         </div>
+        @endif
         <div class="wrapper">
+            @if (Auth::check())
             <div class="posting-form">
                 <form action="{{ route('post.create') }}" method="post" enctype="multipart/form-data">
                     <textarea class="form-control" name="content" rows="8"></textarea>
@@ -22,6 +31,7 @@
                     <input type="hidden" value="{{ Session::token() }}" name="_token">
                 </form>
             </div>
+            @endif
             <div class="posts">
                 @include('includes.messages')
                 @foreach($posts as $post)
@@ -53,7 +63,7 @@
                         <span>{{ $post->user->username }}</span> &#124;
                         <span>{{ $post->created_at }}</span>
                         <div class="info pull-right">
-                                <span title="Total score" class="badge">1043</span>
+                                <span title="Total score" class="badge">43</span>
                                 <a href="#" title="Up">
                                     <span class="glyphicon glyphicon-circle-arrow-up"></span>
                                 </a>

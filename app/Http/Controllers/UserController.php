@@ -33,7 +33,7 @@ class UserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('home');
     }
 
     public function postSignIn(Request $request)
@@ -44,11 +44,21 @@ class UserController extends Controller
         ]);
         
         if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
-            return redirect()->route('dashboard');
+            return redirect()->route('home');
         }
         return redirect()->back();
     }
-    
+
+    public function getSignUp()
+    {
+        return view('signup');
+    }
+
+    public function getSignIn()
+    {
+        return view('signin');
+    }
+
     public function getLogout()
     {
         Auth::logout();

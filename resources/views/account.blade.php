@@ -27,7 +27,7 @@
             <p><strong>Joined:</strong> {{ $user->created_at}}</p>
             <p><strong>Last visited:</strong> {{ $user->updated_at }}</p>
             <button type="submit" class="btn btn-success">Save</button>
-            <a href="{{ route('dashboard') }}" class="btn btn-default">Back</a>
+            <a href="{{ route('home') }}" class="btn btn-default">Back</a>
             <input type="hidden" value="{{ Session::token() }}" name="_token">
         </form>
                 </div>
