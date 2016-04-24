@@ -28,6 +28,8 @@
                         <a class="btn btn-default" href="{{ route('home') }}">Back</a>
                         <input type="hidden" name="_token" value="{{ Session::token() }}">
                     </form>
+                    </div>
+                </div>
         </div>
     </div>
 @endsection
