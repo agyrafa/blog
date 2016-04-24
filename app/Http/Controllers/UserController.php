@@ -49,16 +49,6 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-    public function getSignUp()
-    {
-        return view('signup');
-    }
-
-    public function getSignIn()
-    {
-        return view('signin');
-    }
-
     public function getLogout()
     {
         Auth::logout();

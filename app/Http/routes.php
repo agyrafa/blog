@@ -30,15 +30,14 @@ Route::post('/signin', [
     'as' => 'signin'
 ]);
 
-Route::get('/sign_up', [
-   'uses' => 'UserController@getSignUp',
-    'as' => 'sign.up'
-]);
 
-Route::get('/sign_in', [
-    'uses' => 'UserController@getSignIn',
-    'as' => 'sign.in'
-]);
+Route::get('/sign_up', function() {
+   return view('signup');
+})->name('sign.up');
+
+Route::get('/sign_in', function() {
+    return view('signin');
+})->name('sign.in');
 
 Route::get('/logout', [
     'uses' => 'UserController@getLogout',
