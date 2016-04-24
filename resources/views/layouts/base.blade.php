@@ -12,5 +12,6 @@
 @yield('content')
 <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 </body>
 </html>

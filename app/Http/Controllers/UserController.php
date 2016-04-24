@@ -86,4 +86,9 @@ class UserController extends Controller
         $file = Storage::disk('public')->get($filename);
         return new Response($file, 200);
     }
+    
+    public function getInbox()
+    {
+        return view('inbox');
+    }
 }

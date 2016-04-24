@@ -41,6 +41,23 @@ class PostController extends Controller
         return redirect()->route('home')->with(['message' => $message]);
     }
 
+    public function postPostEdit($post_id)
+    {
+        $post = Post::where('id', $post_id)->first();
+        if(Auth::user() != $post->user) {
+            return redirect()->back();
+        }
+        
+        $message = '';
+        
+        
+    }
+
+    public function getEditPost() {
+
+        return view('edit_post');
+    }
+
     public function getDeletePost($post_id)
     {
         $post = Post::where('id', $post_id)->first();

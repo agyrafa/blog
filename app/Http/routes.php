@@ -67,6 +67,16 @@ Route::post('/create_post', [
     'middleware' => 'auth'
 ]);
 
+Route::get('/edit_post', [
+   'uses' => 'PostController@getEditPost',
+    'as' => 'edit_post',
+    'middleware' => 'auth'
+]);
+
+Route::post('/post', [
+   'uses' => 'PostController@postEditPost',
+    'as' => 'post.edit'
+]);
 
 Route::get('/delete_post/{post_id}', [
     'uses' => 'PostController@getDeletePost',
@@ -77,4 +87,10 @@ Route::get('/delete_post/{post_id}', [
 Route::get('attachment/{filename}', [
     'uses' => 'PostController@getAttachPhoto',
     'as' => 'upload.photo'
+]);
+
+Route::get('inbox', [
+   'uses' => 'UserController@getInbox',
+    'as' => 'inbox',
+    'middleware' => 'auth'
 ]);

@@ -1,4 +1,10 @@
 .wrapper {
+	width: 60%;
+	padding: 10px;
+	margin: auto;
+}
+
+.content {
 	width: 65%;
 	margin: 0 auto;
 	font-family: 'PT Sans', sans-serif;
