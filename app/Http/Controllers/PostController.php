@@ -38,7 +38,7 @@ class PostController extends Controller
             Storage::disk('public')->put($filename, File::get($file));
         }
 
-        return redirect()->route('dashboard')->with(['message' => $message]);
+        return redirect()->route('home')->with(['message' => $message]);
     }
 
     public function getDeletePost($post_id)
@@ -52,7 +52,7 @@ class PostController extends Controller
             $message = 'Post successfully deleted!';
         }
 
-        return redirect()->route('dashboard')->with(['message' => $message]);
+        return redirect()->route('home')->with(['message' => $message]);
     }
 
     public function getAttachPhoto($filename)

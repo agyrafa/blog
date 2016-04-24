@@ -11,9 +11,6 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('dashboard');
-})->name('home');*/
 
 Route::get('/', [
     'uses' => 'PostController@getDashboard',
