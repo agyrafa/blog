@@ -22,7 +22,7 @@
             @if (Auth::check())
             <div class="posting-form">
                 <form action="{{ route('post.create') }}" method="post" enctype="multipart/form-data">
-                    <textarea class="form-control" name="content" rows="8"></textarea>
+                    <textarea class="form-control" name="content" rows="8" autofocus="autofocus"></textarea>
                     <div class="post-control">
                         <label for="upload_photo"><span class="btn glyphicon glyphicon-picture"></span></label>
                         <input type="file" class="hidden" id="upload_photo" name="upload_photo">

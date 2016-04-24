@@ -17,7 +17,7 @@
                 @endif
         <form action="{{ route('account.update') }}" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="account_photo">Image (only .jpg)</label>
+                <label for="account_photo">Image</label>
                 <input type="file" id="account_photo" class="form-control" name="account_photo">
             </div>
             <div class="form-group">
