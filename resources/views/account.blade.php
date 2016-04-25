@@ -21,10 +21,8 @@
                 <label for="account_photo">Image</label>
                 <input type="file" id="account_photo" class="form-control" name="account_photo">
             </div>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" class="form-control" name="username" value="{{ $user->username }}">
-            </div>
+            <p><strong>Username:</strong> {{ $user->username }}</p>
+            <p><strong>E-mail:</strong> {{ $user->email }}</p>
             <p><strong>Joined:</strong> {{ $user->created_at}}</p>
             <p><strong>Last visited:</strong> {{ $user->updated_at }}</p>
             <button type="submit" class="btn btn-success">Save</button>

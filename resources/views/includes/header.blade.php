@@ -20,7 +20,7 @@
                     <li><a href="{{ route('sign.in') }}">Sign In</a></li>
                     @endif
                     @if (Auth::check())
-                    <li><a href="{{ route('account') }}">Settings</a></li>
+                    <li><a href="{{ route('account') }}">Account</a></li>
                     <li><a href="{{ route('logout') }}">Logout</a></li>
                     @endif
                 </ul>

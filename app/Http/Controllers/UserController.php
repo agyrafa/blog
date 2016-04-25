@@ -63,9 +63,6 @@ class UserController extends Controller
 
     public function postUpdateAccount(Request $request)
     {
-        $this->validate($request, [
-            'username' => 'required',
-        ]);
         $user = Auth::user();
         $user->username = $request['username'];
         $message = '';
