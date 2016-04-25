@@ -5,19 +5,7 @@
 @endsection
 
 @section('content')
-        @if (!Auth::check())
-        <div class="sign-up-in">
-            <a class="btn btn-primary" href="{{ route('sign.up') }}">Sign Up</a>
-            <a class="btn btn-success" href="{{ route('sign.in') }}">Sign In</a>
-        </div>
-        @endif
-        @if (Auth::check())
-        <div class="logout">
-            <a href="{{ route('inbox') }}" title="Inbox" class="btn btn-default" type="button"><span class="glyphicon glyphicon-inbox"></span></a>
-            <a class="btn btn-primary" href="{{ route('account') }}">Settings</a>
-            <a class="btn btn-danger" href="{{ route('logout') }}">Logout</a>
-        </div>
-        @endif
+    @include('includes.header')
         <div class="content">
             @if (Auth::check())
             <div class="posting-form">
@@ -45,9 +33,6 @@
                     <div class="panel-body">
                         @if (Auth::user() == $post->user)
                             <div class="control pull-right">
-                                <a href="{{ route('edit_post') }}" title="Edit">
-                                    <span class="glyphicon glyphicon-pencil"></span>
-                                </a>
                                 <a href="{{ route('post.delete', ['post_id' => $post->id]) }}" title="Delete">
                                     <span class="glyphicon glyphicon-remove-circle"></span>
                                 </a>

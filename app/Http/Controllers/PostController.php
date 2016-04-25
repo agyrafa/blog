@@ -77,4 +77,5 @@ class PostController extends Controller
         $file = Storage::disk('public')->get($filename);
         return new Response($file, 200);
     }
+    
 }

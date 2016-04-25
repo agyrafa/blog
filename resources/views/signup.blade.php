@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    @include('includes.header')
     <div class="wrapper">
         <div class="account">
             @include('includes.messages')
