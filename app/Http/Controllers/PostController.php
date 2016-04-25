@@ -8,6 +8,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Jenssegers\Agent\Agent;
 
 class PostController extends Controller
 {
@@ -15,7 +16,13 @@ class PostController extends Controller
     {
         $posts = Post::orderBy('created_at', 'desc')->get();
 
-        return view('dashboard', ['posts' => $posts]);
+        $agent = new Agent();
+        $device = $agent->isMobile();
+        if($device) {
+            return view('mobile', ['posts' => $posts]);
+        } else {
+            return view('dashboard', ['posts' => $posts]);
+        }
     }
 
     public function postCreatePost(Request $request)
