@@ -50,11 +50,6 @@ Route::get('/account', [
     'middleware' => 'auth'
 ]);
 
-Route::post('account_update', [
-   'uses' => 'UserController@postUpdateAccount',
-    'as' => 'account.update'
-]);
-
 Route::get('account_photo/{filename}', [
    'uses' => 'UserController@getUserPhoto',
     'as' => 'account.photo'

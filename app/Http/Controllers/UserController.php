@@ -60,27 +60,5 @@ class UserController extends Controller
     {
         return view('account', ['user' => Auth::user()]);
     }
-
-    public function postUpdateAccount(Request $request)
-    {
-        $user = Auth::user();
-        $user->username = $request['username'];
-        $message = '';
-        if($user->update()) {
-            $message = 'Account successfully updated!';
-        }
-        $file = $request->file('account_photo');
-        $filename = $request['username'] . '-' . $user->id . '.jpg';
-        if ($file) {
-            Storage::disk('public')->put($filename, File::get($file));
-        }
-        return redirect()->route('account')->with(['message' => $message]);
-
-    }
-
-    public function getUserPhoto($filename)
-    {
-        $file = Storage::disk('public')->get($filename);
-        return new Response($file, 200);
-    }
+    
 }
