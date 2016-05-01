@@ -37,7 +37,7 @@
                                 </a>
                             </div>
                         @endif
-                        <p id="content">{{ $post->content }}</p>
+                        <p>{{ $post->content }}</p>
                         @if (Storage::disk('public')->has($post->id .'.jpg'))
                             <hr>
                             <div class="row">

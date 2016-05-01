@@ -13,4 +13,9 @@ class User extends Model implements Authenticatable
     {
         return $this->hasMany('App\Post');
     }
+
+    public function attach()
+    {
+        return $this->hasMany('App\Attachment');
+    }
 }

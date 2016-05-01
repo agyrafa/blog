@@ -1,3 +1,4 @@
+
 @extends('layouts.base')
 
 @section('title')
@@ -12,14 +13,14 @@
                 <form action="{{ route('post.create') }}" method="post" enctype="multipart/form-data">
                     <textarea class="form-control" name="content" rows="8" autofocus="autofocus"></textarea>
                     <div class="post-control">
-                        <label title="Location" class="btn" for="location"><span class="glyphicon glyphicon-map-marker"></span></label>
+                        <label title="Location" class="btn location" for="location"><span class="glyphicon glyphicon-map-marker"></span></label>
                         <input type="text" class="hidden" id="location" name="location">
-                        <label title="Video" class="btn" for="video"><span class="glyphicon glyphicon-facetime-video"></span></label>
+                        <label title="Video" class="btn video" for="video"><span class="glyphicon glyphicon-facetime-video"></span></label>
                         <input type="text" class="hidden" id="video" name="video">
-                        <label title="Audio" class="btn" for="audio"><span class="glyphicon glyphicon-music"></span></label>
+                        <label title="Audio" class="btn audio" for="audio"><span class="glyphicon glyphicon-music"></span></label>
                         <input type="text" class="hidden" id="audio" name="audio">
                         <label title="Image" class="btn" for="upload_photo"><span class="glyphicon glyphicon-picture"></span></label>
-                        <input type="file" class="hidden" id="upload_photo" name="upload_photo">
+                        <input type="file" class="image hidden" id="upload_photo" name="upload_photo">
                     <button class="btn btn-success" type="submit">Post</button>
                     </div>
                     <input type="hidden" value="{{ Session::token() }}" name="_token">
@@ -38,7 +39,7 @@
                                 </a>
                             </div>
                         @endif
-                        <p id="content">{{ $post->content }}</p>
+                        <p>{{ $post->content }}</p>
                         @if (Storage::disk('public')->has($post->id .'.jpg'))
                         <hr>
                         <div class="row">

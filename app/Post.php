@@ -10,4 +10,9 @@ class Post extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function attach()
+    {
+        return $this->hasMany('App\Attachment');
+    }
 }

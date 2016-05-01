@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->timestamps();
             $table->text('content');
             $table->integer('user_id');
+            $table->integer('votes', 0);
         });
     }
 
