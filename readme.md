@@ -1,6 +1,5 @@
 # Blog Platform on Laravel Framework
 
-#Demo - http://blog.francoder.ru/
 
 Features:
 - Attachments:
